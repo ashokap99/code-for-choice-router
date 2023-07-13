@@ -1,0 +1,4 @@
+%dw 2.0
+
+type auto_c5e8d4b0_2994_4cf7_805d_7925bf299108_Output_Variables_company = String | Null
+

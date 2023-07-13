@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="choicerouter-suite.xml" />
+	<munit:test name="choicerouter-flow-test" doc:id="63e61b06-4d7f-4941-a85f-a970e251ecd8" >
+		<munit:behavior >
+			<munit:set-event doc:name="Set Input" doc:id="c46b1742-33b0-4334-9fe7-e64879983971" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://choicerouterflowtest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://choicerouterflowtest\set-event_attributes.dwl')]" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to choicerouter-flow" doc:id="1e77e91b-01a2-4aaa-af5d-5df7d4fd2988" name="choicerouter-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="9c2af4ec-c6c0-41aa-8c7f-607ee0d57240" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import choicerouterflowtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="choicerouter-flow-test1" doc:id="e04097b8-fb1e-49a5-b2d7-9f6357d8ff60" >
+		<munit:behavior >
+			<munit:set-event doc:name="Set Input" doc:id="748e3fad-7b64-49a2-a3cc-077e7c0320f8" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://choicerouterflowtest1\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://choicerouterflowtest1\set-event_attributes.dwl')]" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to choicerouter-flow" doc:id="66a49ac9-0432-4e65-9172-f8e60a7d9852" name="choicerouter-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="82185dca-99f8-4085-b691-7b9a9115f0f2" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import choicerouterflowtest1::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="choicerouter-flow-test2" doc:id="16966956-d6c5-4c38-beda-420947b12ab8" >
+		<munit:behavior >
+			<munit:set-event doc:name="Set Input" doc:id="3790fb96-5a5f-4971-bdae-98f338510ae7" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://choicerouterflowtest2\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://choicerouterflowtest2\set-event_attributes.dwl')]" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to choicerouter-flow" doc:id="0536e320-d6db-42e0-ad01-5717cb58d3cf" name="choicerouter-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="bf5deb7e-7399-4d1b-b9f9-970dae79e9bb" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import choicerouterflowtest2::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="choicerouter-flow-test3" doc:id="5988b6be-bf02-4949-95e1-72375a920c90" >
+		<munit:behavior >
+			<munit:set-event doc:name="Set Input" doc:id="6132209f-4ace-4e2b-9097-b26edb48792d" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://choicerouterflowtest3\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://choicerouterflowtest3\set-event_attributes.dwl')]" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to choicerouter-flow" doc:id="c1d587fe-0545-4aea-a66d-8887cab237b2" name="choicerouter-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="17a0736e-cd49-49bb-8056-2b7ce842f1dd" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import choicerouterflowtest3::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
