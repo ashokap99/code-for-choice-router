@@ -9,7 +9,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	</http:listener-config>
 	<flow name="choicerouter-flow" doc:id="c5e8d4b0-2994-4cf7-805d-7925bf299108" >
 		<http:listener doc:name="Listener" doc:id="2601e9bc-f74a-47c3-8ed8-183dc0943d5c" config-ref="HTTP_Listener_config" path="/choice"/>
-		<logger level="INFO" doc:name="Logger" doc:id="63fbdd48-2945-470e-849c-00b6b98119fa" message="request received"/>
+		<logger level="INFO" doc:name="debug" doc:id="63fbdd48-2945-470e-849c-00b6b98119fa" message="request received"/>
 		<set-variable value="#[attributes.queryParams.company]" doc:name="Set Variable" doc:id="d4ab4edf-388d-4305-836d-ae80dcdf9dd8" variableName="company"/>
 		<choice doc:name="Choice" doc:id="a827b575-17e0-4c11-be58-5308ffc4293a" >
 			<when expression='#[vars.company == "Rgt"]'>
@@ -25,5 +25,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 				<set-payload value="its from default one" doc:name="Set Payload" doc:id="454ba2fa-8970-4737-b352-6e00d4f85538" />
 			</otherwise>
 		</choice>
+		<logger level="INFO" doc:name="debug" doc:id="34bdc9c2-153f-4399-8f1b-5dbc0cb2e725" message="#[payload]"/>
 	</flow>
 </mule>
