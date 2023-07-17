@@ -35,8 +35,8 @@
 				         <uri>https://anypoint.mulesoft.com</uri>
 				         <muleVersions>${mule.version}</muleVersions>
 				         <!-- deploy user paramaters -->
-				         <username>${anypoint.username</username>
-				         <password>${anypoint.password</password>
+				         <username>${anypoint.username}</username>
+				         <password>${anypoint.password}</password>
 				         <environment>${env}</environment>
 				         <applicationname>${appname}</applicationname>
 				         <businessGroup>${business}</businessGroup>
